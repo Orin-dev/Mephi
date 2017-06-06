@@ -92,6 +92,9 @@ void PropDialog::setDst(QImage &dst)
 void PropDialog::clear()
 {
 //ui->listWidget->clear();
+    if(img)
+        delete img,dst;
+    delete this->props;
       int n = ui->listWidget->count() - 1;
       for(int j=n; j>=1; j--) {
         QListWidgetItem *it = ui->listWidget->item(j);

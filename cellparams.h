@@ -28,8 +28,19 @@ inline const bool operator ==(Coords c){if ((X==c.X)&&(Y==c.Y)) return true; els
 };
 
 
-struct CellProps
+/*class CellProps
 {
+public:
+   CellProps(){
+               XC=0;
+               XP=0;
+               S=0;
+               YC=0;
+               YP=0;
+               contour = new QVector<Coords>();
+               body = new QVector<Coords>();
+              }
+   ~CellProps(){delete contour; delete body;}
     Coords ur;
     Coords dl;
     int XC,YC;
@@ -44,7 +55,23 @@ struct CellProps
 
 
 };
+*/
 
+struct CellProps
+{
+public:
+    Coords ur;
+    Coords dl;
+    int XC,YC;
+    double S;
+    int P;
+    QVector<Coords>* contour;
+    int XP,YP;
+    QRgb color;
+    QVector<Coords>* body;
+    int colorness;
+    double Shape;
+};
 
 class CellParams
 {

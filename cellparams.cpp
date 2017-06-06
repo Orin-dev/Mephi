@@ -58,10 +58,8 @@ void CellParams::ObjSearchWouR()
     S=0;
     props->clear();
     CellProps prop;
-    prop.XC=prop.XP=prop.S=XP=XC=0;
-    prop.YC=prop.YP=YP=YC=0;
-    prop.contour= new QVector<Coords>();
-    prop.body= new QVector<Coords>();
+    YP=YC=0;
+    XP=XC=0;
     PixCnt=0;
     QVector<Coords>* contour;
     contour= new QVector<Coords>();
@@ -146,6 +144,7 @@ void CellParams::ObjSearchWouR()
                          QVector<Coords>::const_iterator it;
                              for (it = body->constBegin(); it != body->constEnd(); it++)
                             img->setPixel((it->X),(it->Y),qRgb(1,1,0));
+                          delete body;
                       }
                       else
                      {
@@ -208,10 +207,6 @@ void CellParams::ObjSearchWouR()
                         //трансформируем
                           DistanceTransform(contour,body);
                           img->save("dtr" + QString(CNT) + ".bmp","BMP");
-                          /*QVector<Coords>* waters = watershed(body);
-                          QVector<Coords>::const_iterator it;
-                          for(it=waters->constBegin();it!=waters->constEnd();it++)
-                          img->setPixel((it->X),(it->Y),qRgb(1,250,0));*/
                           QVector<CellProps>* newProps=watershed(body,fillColor);
                           QMutableVectorIterator<CellProps> it(*newProps);
                           CellProps tmp;
@@ -254,15 +249,16 @@ void CellParams::ObjSearchWouR()
                               props->append(tmp);
                           }
                           //fillColor=fillColor-2;
+                          delete contour;
                           delete newProps;
                       }
                       else
                       {
-                          props->append(prop);
+                         props->append(prop);
                          fillColor=fillColor-2;
                       }
                      }
-                     delete contour;
+                     //delete contour;
                      delete body;
                      //delete newProps;
                       contour= new QVector<Coords>();
@@ -278,25 +274,6 @@ void CellParams::ObjSearchWouR()
         }
     //int qwe=0;
 }
-
-/*QVector<CellProps>* CellParams::immersion(QVector<CellProps> * seeds, const CellProps & prop, int color_thresh)
-{
-    QVector<CellProps> floods=seeds;
-    QVector<Coords>* watershed;
-    watershed = new QVector<Coords>();
-    QHash<int,Coords> body;
-    for (int x=prop.upleft.X; x< prop.downright.X; x++)
-        for(int y=prop.downright.Y;y<prop.upleft.Y;y++)
-            if (qBlue(prop.color)==img->pixel(x,y))
-                body.insertMulti(QColor(img->pixel(x,y)).red(), Coords(x,y));
-    //получили хэш пикселей по цветам далее для каждого пикселя яркости начиная с color_thresh
-    // смотрим его соседей, куда может скатываться. для каждого соседа скатываем его дальше,
-    //пока не найдем бассейн или не найдем самую низкую точку.
-    // считаем количество бассейнов.
-    //если 0, то новый ассейн. Если 1, то
-
-
-}*/
 
 QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor)
 {
@@ -319,18 +296,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
     }
     int cnt;
     int elem=0;
-    /*for (int col=0; col<45;col++)
-    {
-        pixels=b.values(col);
-        for(int i=0;i<pixels.size();i++)
-        {
-            x=pixels[i].X;
-            y=pixels[i].Y;
-            //b.insertMulti(25,Coords(x, y));
-            img->setPixel(x, y,qRgb(5,0,0));
-        }
-
-    }*/
 
     for (int col=0; col<255;col++)
     {
@@ -352,9 +317,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                 int cntOne=0;
                 int thresh=0;
                 int same=0;
-              // int n_biggest;
-//if((x==1123)&&(y==377)||(x==1127)&&(y==378)||(x==1133)&&(y==380)||(x==1136)&&(y==380)||(x==1137)&&(y==382)||(x==1139)&&(y==384))//y==415
-  //      int g=0;
                 color=qRed(img->pixel(x,y));
 
                 //#########проверим, если пиксель окружен дубликатами#############
@@ -395,15 +357,11 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                 {
                     cntOne=0;
                     //#########смоторим, куда скатывается############# //перепилить через итератор обращение к k-му бассейну.
-                  //  int size_k=floods[k].body.size();
-                   // int size_e=floods[elem].body.size();
                 if(x + 1 < img->size().width())
                     if ((QColor(img->pixel(x+1,y)).red()<=color+thresh))
                         if(floods[k].body.contains((x+1)*10000+(y)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                               n_biggest=k;*/
                             elem=k;
                         }
                 if(y + 1 < img->size().height())
@@ -411,8 +369,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x)*10000+(y+1)))
                         {
                             cntOne++;
-                          /*  if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(x - 1 > 0)
@@ -420,8 +376,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x-1)*10000+(y)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(y - 1 > 0)
@@ -429,8 +383,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x)*10000+(y-1)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(y + 1 < img->size().height() && x + 1 < img->size().width())
@@ -438,8 +390,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x+1)*10000+(y+1)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(x - 1 > 0 && y + 1 < img->size().height())
@@ -447,8 +397,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x-1)*10000+(y+1)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(x - 1 > 0 && y - 1 > 0)
@@ -456,8 +404,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x-1)*10000+(y-1)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                 if(y - 1 > 0 && x + 1 < img->size().width())
@@ -465,8 +411,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                         if(floods[k].body.contains((x+1)*10000+(y-1)))
                         {
                             cntOne++;
-                            /*if(size_k>=size_e)
-                                n_biggest=k;*/
                             elem=k;
                         }
                     if(cntOne>0)
@@ -475,8 +419,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                 }
                 if(cnt==1)
                 {
-                    //pixels.removeAt(i);
-                    //i--;
                     int color=QColor(img->pixel(x,y)).red();
                     floods[elem].body.insert(((x)*10000+(y)), color);
                     img->setPixel(x,y,qRgb(0, floods[elem].color, 0)); //сделать так, чтобы цвета продолжались от тех, что при заливке (сделать заливку разными цветами)
@@ -484,8 +426,6 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
                 }
                 if(cnt>1) //&&floods[n_biggest].size()>500
                 {
-                    //pixels.removeAt(i);
-                    //i--;
                     watershed->append(Coords((x),(y)));
                 }
                 if(cnt==0)
@@ -709,14 +649,20 @@ QVector<Coords>* CellParams::bugContour(int x, int y, int color)
     QVector<Coords>* contour = new QVector<Coords>();
 
     Coords first(x,y);
-    Coords curr(x-1,y);
+    Coords curr(x,y);
 
     if((QColor(img->pixel(x,y+1)).green()!=color))
-    {
-        curr.Y++;
-        curr.X++;
-        direction ='u';
-    }
+        {
+            //curr.Y++;
+            curr.X++;
+            direction ='r';
+        }
+    else
+        {
+            curr.Y++;
+            direction ='u';
+
+        }
 
 
 
@@ -843,17 +789,23 @@ QVector<Coords>* CellParams::bugContour_color(Coords dl, Coords ur, int color)
         if(x!=0)
             break;
     }
+    //return bugContour(x,y,color);
 
     Coords first(x,y);
-    Coords curr(x-1,y);
+    Coords curr(x,y);
 
     if((QColor(img->pixel(x,y+1)).green()!=color))
-    {
-        curr.Y++;
-        curr.X++;
-        direction ='u';
-    }
+        {
+            //curr.Y++;
+            curr.X++;
+            direction ='r';
+        }
+    else
+        {
+            curr.Y++;
+            direction ='u';
 
+        }
 
 
     while(!(curr==first))
