@@ -431,8 +431,8 @@ void Widget::binarisationValue2(int porog)//Бинаризация по V2
 ///
 void Widget::on_pushButton_12_clicked()//Автомат
 {
-    //if(cp)
-    //delete cp;
+    if(cp!=NULL)
+    delete cp;
 
 
     QImage src = my->pixmap().toImage();
@@ -526,7 +526,7 @@ void Widget::on_pushButton_12_clicked()//Автомат
     QImage bin(dst);
    // my->setPixmap(QPixmap::fromImage(dst));
     //dst = my->pixmap().toImage();
-    cp = new CellParams(dst);
+    cp = new CellParams(&dst);
     cp->setCriteria(ui->lineEdit_9->text().toInt());
     cp->setCriteria1(ui->lineEdit_2->text().toInt());
     cp->ObjSearchWouR();

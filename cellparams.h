@@ -54,23 +54,28 @@ public:
     double Shape;
 
 
-};
-*/
+};*/
+
 
 struct CellProps
 {
 public:
-    Coords ur;
-    Coords dl;
-    int XC,YC;
-    double S;
-    int P;
-    QVector<Coords>* contour;
-    int XP,YP;
-    QRgb color;
-    QVector<Coords>* body;
-    int colorness;
-    double Shape;
+    Coords ur = Coords(0,0);
+    Coords dl = Coords(0,0);
+    int XC,YC = 0;//координаты центра
+    double S = 0.0; //площадь
+    double citoplasmRatio = 0.0; //отношение площади ядра к площади цитоплазмы
+    int P = 0; //приблизительный периметр (длина контура)
+    QVector<Coords>* contour = NULL; //вектор точек контура ядра
+    int XP,YP = 0; //координаты первой найденной точки (край)
+    QRgb color = 0;
+    QVector<Coords>* body = NULL; //вектор точек ядра
+    int citoplasmHue = 0; //отттенок цитоплазмы
+    double Shape = 0.0; //коэффициент формы ядра
+    double roundCoef; //округлость (фактор формы) 4*пи*S/P^2
+    double rectFill; //заполнение описанного прямоугольника
+    double M = 0.0; // момент границы ядра
+    int nuclearBrightness = 0;
 };
 
 class CellParams
@@ -78,7 +83,7 @@ class CellParams
 //Q_OBJECT
 public:
 
-    CellParams(QImage &image);
+    CellParams(QImage *image);
     ~CellParams();
 
    // QImage getImage();

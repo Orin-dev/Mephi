@@ -89,3 +89,8 @@ void MainWindow::on_pushButton_2_clicked()
 
     imageReady();
 }
+
+void MainWindow::on_action_4_triggered()
+{
+    c.show();
+}

@@ -38,6 +38,7 @@ public:
     QAction *action;
     QAction *action_2;
     QAction *action_3;
+    QAction *action_4;
     QWidget *centralWidget;
     QLabel *label_3;
     QLineEdit *lineEdit;
@@ -75,6 +76,8 @@ public:
         action_2->setObjectName(QStringLiteral("action_2"));
         action_3 = new QAction(MainWindow);
         action_3->setObjectName(QStringLiteral("action_3"));
+        action_4 = new QAction(MainWindow);
+        action_4->setObjectName(QStringLiteral("action_4"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label_3 = new QLabel(centralWidget);
@@ -210,6 +213,7 @@ public:
         menuBar->addAction(menu_3->menuAction());
         menu->addAction(action);
         menu_2->addAction(action_2);
+        menu_2->addAction(action_4);
         menu_3->addAction(action_3);
 
         retranslateUi(MainWindow);
@@ -223,6 +227,7 @@ public:
         action->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\272\321\200\321\213\321\202\321\214", 0));
         action_2->setText(QApplication::translate("MainWindow", "\320\220\320\275\320\260\320\273\320\270\320\267 \321\217\320\264\320\265\321\200", 0));
         action_3->setText(QApplication::translate("MainWindow", "\320\241\320\265\321\202\320\265\320\262\321\213\320\265 \320\275\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270", 0));
+        action_4->setText(QApplication::translate("MainWindow", "\320\232\320\273\320\260\321\201\321\201\320\270\321\204\320\270\320\272\320\260\321\202\320\276\321\200", 0));
         label_3->setText(QApplication::translate("MainWindow", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\277\320\260\321\206\320\270\320\265\320\275\321\202\320\276\320\262", 0));
         label_4->setText(QApplication::translate("MainWindow", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", 0));
         label_5->setText(QApplication::translate("MainWindow", "\320\222\321\200\320\265\320\274\321\217 \320\267\320\260\320\277\320\270\321\201\320\270", 0));

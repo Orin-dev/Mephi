@@ -329,6 +329,7 @@
      <string>Инструменты</string>
     </property>
     <addaction name="action_2"/>
+    <addaction name="action_4"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -362,6 +363,11 @@
   <action name="action_3">
    <property name="text">
     <string>Сетевые настройки</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Классификатор</string>
    </property>
   </action>
  </widget>

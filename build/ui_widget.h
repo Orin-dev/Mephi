@@ -266,7 +266,7 @@ public:
         pushButton_3->setText(QApplication::translate("Widget", "+", 0));
         pushButton_10->setText(QApplication::translate("Widget", "\320\241\320\276\321\205\321\200\320\236\320\261\320\273", 0));
         pushButton_12->setText(QApplication::translate("Widget", "\320\220\320\262\321\202\320\276\320\274\320\260\321\202", 0));
-        lineEdit_9->setText(QApplication::translate("Widget", "7000", 0));
+        lineEdit_9->setText(QApplication::translate("Widget", "5000", 0));
         label_4->setText(QApplication::translate("Widget", "\320\262\320\262\320\276\320\264 \320\276\320\272\320\275\320\260 \320\277\320\276\320\270\321\201\320\272\320\260", 0));
         lineEdit_5->setText(QApplication::translate("Widget", "10", 0));
         lineEdit_4->setText(QApplication::translate("Widget", "40", 0));
@@ -279,7 +279,7 @@ public:
 " \320\276\320\261\321\212\320\265\320\272\321\202\320\260\320\262 \320\277\320\270\320\272\321\201\320\265\320\273\321\217\321\205", 0));
         label_8->setText(QApplication::translate("Widget", "\320\234\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \321\200\320\260\320\267\320\274\320\265\321\200\n"
 " \320\275\320\265\321\201\320\273\320\270\320\277\321\210\320\270\321\205\321\201\321\217", 0));
-        lineEdit_2->setText(QApplication::translate("Widget", "13000", 0));
+        lineEdit_2->setText(QApplication::translate("Widget", "16000", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Widget", "\320\236\321\201\320\275\320\276\320\262\320\275\321\213\320\265", 0));
         HSV_H->setText(QApplication::translate("Widget", "HSV-H", 0));
         pushButton_9->setText(QApplication::translate("Widget", "\320\230\320\267\320\262\320\273\320\265\321\207\320\265\320\275\320\270\320\265", 0));

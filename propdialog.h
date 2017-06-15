@@ -4,10 +4,28 @@
 #include <QDialog>
 #include "cellparams.h"
 #include "mygraphicsobject.h"
+#include "QtCore/qmath.h"
+#include "include/qtcsv/reader.h"
+#include "include/qtcsv/stringdata.h"
+#include "include/qtcsv/writer.h"
+
+enum PixelClass{ NONE, BCG , CPL , NCL };
 
 namespace Ui {
 class PropDialog;
 }
+
+struct Pixel{
+    int cl;
+    int green;
+    int blue;
+};
+
+struct Cluster{
+    int green;
+    int blue;
+    int nObjects;
+};
 
 class PropDialog : public QDialog
 {
@@ -25,7 +43,11 @@ public:
     QImage* getDst();
     void setImgName(QString &s);
     QString& getImgName();
+    void kMeans(QImage* img, QImage *mask);
     QImage* mini;
+
+    QStringList strList;
+    QtCSV::StringData strData;
 signals:
     void PressSgn();
 
@@ -40,6 +62,8 @@ private slots:
     void on_listWidget_itemChanged(QListWidgetItem *item);
 
     void on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::PropDialog *ui;

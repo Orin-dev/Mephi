@@ -12,6 +12,7 @@ INPUT(
 ./debug\netdialog.o
 ./debug\myserver.o
 ./debug\myclient.o
+./debug\classifier.o
 ./debug\moc_mainwindow.o
 ./debug\moc_dialog.o
 ./debug\moc_propdialog.o
@@ -22,4 +23,5 @@ INPUT(
 ./debug\moc_netdialog.o
 ./debug\moc_myserver.o
 ./debug\moc_myclient.o
+./debug\moc_classifier.o
 );

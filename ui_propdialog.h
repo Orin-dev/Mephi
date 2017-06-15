@@ -46,6 +46,7 @@ public:
     QLabel *label_8;
     QLineEdit *lineEdit_3;
     QLabel *label_3;
+    QPushButton *pushButton_3;
 
     void setupUi(QDialog *PropDialog)
     {
@@ -108,6 +109,9 @@ public:
         label_3 = new QLabel(PropDialog);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(330, 150, 61, 20));
+        pushButton_3 = new QPushButton(PropDialog);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(350, 10, 75, 21));
 
         retranslateUi(PropDialog);
         QObject::connect(buttonBox, SIGNAL(accepted()), PropDialog, SLOT(accept()));
@@ -127,6 +131,7 @@ public:
         label_7->setText(QApplication::translate("PropDialog", "\342\204\226", 0));
         label_8->setText(QApplication::translate("PropDialog", "\320\236\320\261\321\212\320\265\320\272\321\202", 0));
         label_3->setText(QApplication::translate("PropDialog", "ShapeCoeff", 0));
+        pushButton_3->setText(QApplication::translate("PropDialog", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", 0));
     } // retranslateUi
 
 };

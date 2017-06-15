@@ -6,6 +6,7 @@
 #include "netdialog.h"
 #include "myserver.h"
 #include "myclient.h"
+#include "classifier.h"
 #include <QFileDialog>
 
 namespace Ui {
@@ -35,12 +36,15 @@ private slots:
 
     void onImageRecieved();
 
+    void on_action_4_triggered();
+
 private:
     Ui::MainWindow *ui;
     UdpChat chat;
     NetDialog* net;
     MyServer* srv;
     MyClient* client;
+    Classifier c;
     QString pFiles;
 signals:
     void imageReady();

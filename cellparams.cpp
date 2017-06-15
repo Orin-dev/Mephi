@@ -13,12 +13,12 @@
 #include "QtCore/qmath.h"
 #include <cmath>
 
-CellParams::CellParams(QImage &image)
+CellParams::CellParams(QImage *image) //img 58 глючит не находит внутреннюю область
 {
     S=0;
-    img=&image;
-    imageSize.X=image.width();
-    imageSize.Y=image.height();
+    img=image;
+    imageSize.X=image->width();
+    imageSize.Y=image->height();
     CNT=(2*imageSize.Y)*(imageSize.X);
     props= new QVector<CellProps>();
     Coormas = new int[CNT];
@@ -28,9 +28,9 @@ CellParams::CellParams(QImage &image)
 
 CellParams::~CellParams()
 {
-    delete props;
+    props->clear();
     delete FlPixels;
-    delete img;
+    //delete img;
     delete Coormas;
 }
 
@@ -56,7 +56,6 @@ void CellParams::ObjSearchWouR()
     int fillColor=253;
     CNT=0;
     S=0;
-    props->clear();
     CellProps prop;
     YP=YC=0;
     XP=XC=0;
@@ -144,7 +143,8 @@ void CellParams::ObjSearchWouR()
                          QVector<Coords>::const_iterator it;
                              for (it = body->constBegin(); it != body->constEnd(); it++)
                             img->setPixel((it->X),(it->Y),qRgb(1,1,0));
-                          delete body;
+                          body->clear();
+                          // //body = new QVector<Coords>();
                       }
                       else
                      {
@@ -249,8 +249,16 @@ void CellParams::ObjSearchWouR()
                               props->append(tmp);
                           }
                           //fillColor=fillColor-2;
-                          delete contour;
-                          delete newProps;
+                          contour->clear();
+                          // //contour = new QVector<Coords>();
+                          /*for(int i=0; i<newProps->size(); i++)
+                          {
+                           delete newProps->;
+                           delete newProps->value(i).contour;
+                           newProps->value(i).contour=NULL;
+                           newProps->value(i).body=NULL;
+                          }*/
+                          //delete newProps;
                       }
                       else
                       {
@@ -259,7 +267,8 @@ void CellParams::ObjSearchWouR()
                       }
                      }
                      //delete contour;
-                     delete body;
+                     //delete body;
+
                      //delete newProps;
                       contour= new QVector<Coords>();
                       body= new QVector<Coords>();
@@ -498,7 +507,7 @@ QVector<CellProps>* CellParams::watershed(QVector<Coords> * body, int &initColor
             cp->append(prop);
           }
     }
-    delete watershed;
+    watershed->clear();
     return cp;
 }
 
@@ -1030,7 +1039,7 @@ QVector<CellProps>* CellParams::zaliv(Coords dl, Coords ur, int color)
                    //  prop.cnt.X=cnt.X;
                    //  prop.cnt.Y=cnt.Y;
                      prop.S=S;
-                     if(S < 200 || S > 6000)
+                     if(S < 200 || S > 8000)
                      {
                          /*while(S>0)
                                 {
@@ -1041,11 +1050,14 @@ QVector<CellProps>* CellParams::zaliv(Coords dl, Coords ur, int color)
                          QVector<Coords>::const_iterator it;
                              for (it = body->constBegin(); it != body->constEnd(); it++)
                              {
-                                if(S > 6000)
+                                if(S > 8000)
                                     img->setPixel((it->X),(it->Y),qRgb(1,1,1));
                                 if(S < 50)
                                     img->setPixel((it->X),(it->Y),qRgb(1,-color,1));
                              }
+
+                             contour->clear();
+                             body->clear();
                       }
                       else
                      {
@@ -1089,9 +1101,12 @@ QVector<CellProps>* CellParams::zaliv(Coords dl, Coords ur, int color)
               fillColor = fillColor + 2;
 
                }
-               //delete contour;
-                     delete body;
-                     //delete newProps;
+               //contour->clear();
+               //body->clear();
+                     /*for(int i=0; i<newProps->size(); i++)
+                     {
+                         newProps->
+                     }*/
                       contour = new QVector<Coords>();
                       body = new QVector<Coords>();
                       S=0;

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     udpchat.cpp \
     netdialog.cpp \
     myserver.cpp \
-    myclient.cpp
+    myclient.cpp \
+    classifier.cpp
 
 HEADERS  += mainwindow.h \
     cellparams.h \
@@ -38,6 +39,7 @@ HEADERS  += mainwindow.h \
     netdialog.h \
     myserver.h \
     myclient.h \
+    classifier.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -46,6 +48,7 @@ FORMS    += mainwindow.ui \
     widget.ui \
     netdialog.ui \
     propdialog.ui \
+    classifier.ui
 
 
 
