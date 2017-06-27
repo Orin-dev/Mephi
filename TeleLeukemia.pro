@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network printsupport
 
 TARGET = TeleLeukemia
 TEMPLATE = app
@@ -25,7 +25,10 @@ SOURCES += main.cpp\
     netdialog.cpp \
     myserver.cpp \
     myclient.cpp \
-    classifier.cpp
+    classifier.cpp \
+    cellslocation.cpp \
+    databaseprocessor.cpp \
+    qcustomplot.cpp
 
 HEADERS  += mainwindow.h \
     cellparams.h \
@@ -39,7 +42,10 @@ HEADERS  += mainwindow.h \
     netdialog.h \
     myserver.h \
     myclient.h \
-    classifier.h
+    classifier.h \
+    cellslocation.h \
+    databaseprocessor.h \
+    qcustomplot.h
 
 FORMS    += mainwindow.ui \
     dialog.ui \
@@ -48,7 +54,8 @@ FORMS    += mainwindow.ui \
     widget.ui \
     netdialog.ui \
     propdialog.ui \
-    classifier.ui
+    classifier.ui \
+    cellslocation.ui
 
 
 

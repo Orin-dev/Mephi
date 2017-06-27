@@ -18,7 +18,7 @@ PropDialog::PropDialog(QWidget *parent, QImage* img, QImage * dst) :
 
     mini = NULL;
 
-    strList << "Perimeter" << "S" << "Shape" << "CitoplasmRatio" << "Roundness" << "RectFill" << "CitoplasmHue" << "NuclearBrighness" << "ContourMoment" << "XC" << "YC" << "ImgName" << "SubImgNumber";
+    strList << "Perimeter" << "S" << "Shape" << "CitoplasmRatio" << "Roundness" << "RectFill" << "CitoplasmHue" << "NuclearBrighness" << "ContourMoment" << "XC" << "YC" << "ImgName" << "SubImgNumber" << "CellClass" ;
     strData.addRow(strList);
     strList.clear();
 
@@ -245,7 +245,7 @@ void PropDialog::on_pushButton_2_clicked()
        my1->setPixmap(QPixmap::fromImage(*mini));
        my1->getImage().save(imgName  + "-" + QString::number(index) + ".bmp","BMP");
        my1->setPixmap(QPixmap::fromImage(*mini_citoplasm));
-       my1->getImage().save(imgName  + "-citoplasm" + QString::number(index) + ".bmp","BMP");
+       //my1->getImage().save(imgName  + "-citoplasm" + QString::number(index) + ".bmp","BMP");
        delete my1;
        delete mini1;
        delete mini;
@@ -267,7 +267,8 @@ void PropDialog::on_pushButton_2_clicked()
                << QString::number(props->at(index).XC)
                << QString::number(props->at(index).YC)
                << imgName
-               << QString::number(index);
+               << QString::number(index)
+               << QString::number(99);
        strData.addRow(strList);
        strList.clear();
     }

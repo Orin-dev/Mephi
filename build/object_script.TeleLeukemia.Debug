@@ -13,8 +13,12 @@ INPUT(
 ./debug\myserver.o
 ./debug\myclient.o
 ./debug\classifier.o
+./debug\cellslocation.o
+./debug\databaseprocessor.o
+./debug\qcustomplot.o
 ./debug\moc_mainwindow.o
 ./debug\moc_dialog.o
+./debug\moc_mygraphicsobject.o
 ./debug\moc_propdialog.o
 ./debug\moc_showwidget.o
 ./debug\moc_widget.o
@@ -24,4 +28,7 @@ INPUT(
 ./debug\moc_myserver.o
 ./debug\moc_myclient.o
 ./debug\moc_classifier.o
+./debug\moc_cellslocation.o
+./debug\moc_databaseprocessor.o
+./debug\moc_qcustomplot.o
 );

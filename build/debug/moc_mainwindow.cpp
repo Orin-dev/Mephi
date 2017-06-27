@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[11];
-    char stringdata[184];
+    QByteArrayData data[16];
+    char stringdata[265];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,14 +39,22 @@ QT_MOC_LITERAL(6, 87, 12), // "on_newParams"
 QT_MOC_LITERAL(7, 100, 21), // "on_action_3_triggered"
 QT_MOC_LITERAL(8, 122, 23), // "on_pushButton_2_clicked"
 QT_MOC_LITERAL(9, 146, 15), // "onImageRecieved"
-QT_MOC_LITERAL(10, 162, 21) // "on_action_4_triggered"
+QT_MOC_LITERAL(10, 162, 21), // "on_action_4_triggered"
+QT_MOC_LITERAL(11, 184, 28), // "on_tableWidget_2_itemClicked"
+QT_MOC_LITERAL(12, 213, 17), // "QTableWidgetItem*"
+QT_MOC_LITERAL(13, 231, 4), // "item"
+QT_MOC_LITERAL(14, 236, 22), // "on_tableWidget_clicked"
+QT_MOC_LITERAL(15, 259, 5) // "index"
 
     },
     "MainWindow\0imageReady\0\0on_action_2_triggered\0"
     "on_action_triggered\0on_pushButton_clicked\0"
     "on_newParams\0on_action_3_triggered\0"
     "on_pushButton_2_clicked\0onImageRecieved\0"
-    "on_action_4_triggered"
+    "on_action_4_triggered\0"
+    "on_tableWidget_2_itemClicked\0"
+    "QTableWidgetItem*\0item\0on_tableWidget_clicked\0"
+    "index"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +64,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,17 +72,19 @@ static const uint qt_meta_data_MainWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
+       1,    0,   69,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    0,   63,    2, 0x08 /* Private */,
-       7,    0,   64,    2, 0x08 /* Private */,
-       8,    0,   65,    2, 0x08 /* Private */,
-       9,    0,   66,    2, 0x08 /* Private */,
-      10,    0,   67,    2, 0x08 /* Private */,
+       3,    0,   70,    2, 0x08 /* Private */,
+       4,    0,   71,    2, 0x08 /* Private */,
+       5,    0,   72,    2, 0x08 /* Private */,
+       6,    0,   73,    2, 0x08 /* Private */,
+       7,    0,   74,    2, 0x08 /* Private */,
+       8,    0,   75,    2, 0x08 /* Private */,
+       9,    0,   76,    2, 0x08 /* Private */,
+      10,    0,   77,    2, 0x08 /* Private */,
+      11,    1,   78,    2, 0x08 /* Private */,
+      14,    1,   81,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -88,6 +98,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 12,   13,
+    QMetaType::Void, QMetaType::QModelIndex,   15,
 
        0        // eod
 };
@@ -106,6 +118,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_pushButton_2_clicked(); break;
         case 7: _t->onImageRecieved(); break;
         case 8: _t->on_action_4_triggered(); break;
+        case 9: _t->on_tableWidget_2_itemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 10: _t->on_tableWidget_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -118,7 +132,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -146,13 +159,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 11;
     }
     return _id;
 }

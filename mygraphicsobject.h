@@ -18,12 +18,24 @@ struct MyRect//класс для квадратиков
 };
 /////
 
-class MyGraphicsItem : public QGraphicsPixmapItem
+class MyGraphicsItem : public QObject, public QGraphicsPixmapItem
 {
+Q_OBJECT
 
 public:
 
-    MyGraphicsItem(const QPixmap& pm);
+MyGraphicsItem(QGraphicsItem *parent = 0): QObject(), QGraphicsPixmapItem(parent)
+        {
+
+        }
+
+MyGraphicsItem(const QPixmap & pixmap, QGraphicsItem * parent = 0 ): QObject(),
+                                                                     QGraphicsPixmapItem(pixmap, parent)
+        {
+
+        }
+
+ //   MyGraphicsItem(const QPixmap& pm);
     ~MyGraphicsItem();
 
     void paint(QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -43,6 +55,7 @@ public:
 
     void setOneImage(const QImage & src);
     void setTwoImage(const QImage & src);
+    QPoint getPoint();
 
     bool selectionStarted;
 
@@ -59,7 +72,10 @@ public:
 
     int w;
     int h;
+    QPoint point;
 
+signals:
+    void MouseClicked();
     /////
 
 

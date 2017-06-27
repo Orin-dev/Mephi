@@ -8,6 +8,7 @@
 #include "myclient.h"
 #include "classifier.h"
 #include <QFileDialog>
+#include "databaseprocessor.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,13 +39,18 @@ private slots:
 
     void on_action_4_triggered();
 
+    void on_tableWidget_2_itemClicked(QTableWidgetItem *item);
+
+    void on_tableWidget_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     UdpChat chat;
     NetDialog* net;
     MyServer* srv;
     MyClient* client;
-    Classifier c;
+    Classifier* c;
+    DatabaseProcessor* processor;
     QString pFiles;
 signals:
     void imageReady();

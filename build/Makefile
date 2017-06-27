@@ -178,8 +178,10 @@ Makefile: ../TeleLeukemia.pro ../../../Qt/Qt5.4.0/5.4/mingw491_32/mkspecs/win32-
 		../TeleLeukemia.pro \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/qtmaind.prl \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Cored.prl \
+		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5PrintSupport.prl \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Gui.prl \
+		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Sql.prl \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ..\TeleLeukemia.pro
@@ -302,8 +304,10 @@ Makefile: ../TeleLeukemia.pro ../../../Qt/Qt5.4.0/5.4/mingw491_32/mkspecs/win32-
 ..\TeleLeukemia.pro:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/qtmaind.prl:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Cored.prl:
+C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5PrintSupport.prl:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Gui.prl:
+C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Sql.prl:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.4.0/5.4/mingw491_32/lib/Qt5Core.prl:
 qmake: FORCE

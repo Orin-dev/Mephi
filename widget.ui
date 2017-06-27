@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Модуль формирования выборки</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>

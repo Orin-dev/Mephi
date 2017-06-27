@@ -19,7 +19,7 @@ MyServer::MyServer(int nPort, QWidget* pwgt) :
     m_ptxt->setReadOnly(true);
 
     QVBoxLayout* pvbxLayout = new QVBoxLayout;
-    pvbxLayout->addWidget(new QLabel("<H1>Server</H1>"));
+    //pvbxLayout->addWidget(new QLabel("<H1>Поле приема</H1>"));
     pvbxLayout->addWidget(m_ptxt);
     setLayout(pvbxLayout);
 }

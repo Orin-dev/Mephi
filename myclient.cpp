@@ -20,7 +20,7 @@ MyClient::MyClient(const QString& strHost, int nPort, QWidget* pwgt): QWidget(pw
     connect(m_ptxtInput, SIGNAL(returnPressed()),this, SLOT(slotSendToServer()));
 
     QVBoxLayout* pvbxLayout = new QVBoxLayout();
-    pvbxLayout->addWidget(new QLabel("<H1>Client</H1>"));
+    //pvbxLayout->addWidget(new QLabel("<H1>Поле отправки</H1>"));
     pvbxLayout->addWidget(m_ptxtInfo);
     pvbxLayout->addWidget(m_ptxtInput);
     pvbxLayout->addWidget(pcmd);

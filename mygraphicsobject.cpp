@@ -57,13 +57,15 @@ void MyGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *e)//квадра�
     if (e->button()==Qt::LeftButton)//Правая кнопка
     {
         qDebug()<<"Coordinates:"<<QString::number((e->pos().x()))<<" and "<<QString::number((e->pos().y()));
+        point.setX(e->pos().x());
+        point.setY(e->pos().y());
+        emit MouseClicked();
+        //QImage tmp = this->pixmap().toImage();
 
-        QImage tmp = this->pixmap().toImage();
+        //tmp.setPixel(e->pos().x(),e->pos().y(),qRgb(0,0,0));
 
-        tmp.setPixel(e->pos().x(),e->pos().y(),qRgb(0,0,0));
-
-        this->setPixmap(QPixmap::fromImage(tmp));
-        update();
+        //this->setPixmap(QPixmap::fromImage(tmp));
+        //update();
     }
 
     if (e->button()==Qt::RightButton)//Левая кнопка
@@ -165,14 +167,19 @@ void MyGraphicsItem::setHeightRect(int h)//для ширины
 }
 
 
-MyGraphicsItem::MyGraphicsItem(const QPixmap &pm): QGraphicsPixmapItem(pm),w(0),h(0)
-{
+//MyGraphicsItem::MyGraphicsItem(const QPixmap &pm):QObject(), QGraphicsPixmapItem(pm),w(0),h(0)
+//{
 
-}
+
+//}
 
 MyGraphicsItem::~MyGraphicsItem()
 {
 
+}
+
+QPoint MyGraphicsItem::getPoint(){
+    return point;
 }
 
 ///для области///

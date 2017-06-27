@@ -75,7 +75,7 @@ public:
 
     void retranslateUi(QDialog *NetDialog)
     {
-        NetDialog->setWindowTitle(QApplication::translate("NetDialog", "Dialog", 0));
+        NetDialog->setWindowTitle(QApplication::translate("NetDialog", "\320\241\320\265\321\202\320\265\320\262\321\213\320\265 \320\275\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270", 0));
         lineEdit->setText(QApplication::translate("NetDialog", "127.0.0.1", 0));
         lineEdit_3->setText(QApplication::translate("NetDialog", "2323", 0));
         lineEdit_4->setText(QApplication::translate("NetDialog", "2323", 0));

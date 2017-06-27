@@ -13,8 +13,12 @@ INPUT(
 ./release\myserver.o
 ./release\myclient.o
 ./release\classifier.o
+./release\cellslocation.o
+./release\databaseprocessor.o
+./release\qcustomplot.o
 ./release\moc_mainwindow.o
 ./release\moc_dialog.o
+./release\moc_mygraphicsobject.o
 ./release\moc_propdialog.o
 ./release\moc_showwidget.o
 ./release\moc_widget.o
@@ -24,4 +28,7 @@ INPUT(
 ./release\moc_myserver.o
 ./release\moc_myclient.o
 ./release\moc_classifier.o
+./release\moc_cellslocation.o
+./release\moc_databaseprocessor.o
+./release\moc_qcustomplot.o
 );

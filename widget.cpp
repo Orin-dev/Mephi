@@ -34,10 +34,13 @@ void Widget::on_pushButton_clicked()//Загрузка изображения в
 
     QStringList filePathFewImage = QFileDialog::getOpenFileNames();
 
+        if(filePathFewImage.length() != 0){
+
     pFiles = (QFileInfo(filePathFewImage[0]).absolutePath());
 
     foreach (QString file, filePathFewImage)
         ui->listWidget->addItem(QFileInfo(file).fileName());
+        }
 }
 
 ///

@@ -122,7 +122,7 @@ public:
 
     void retranslateUi(QDialog *PropDialog)
     {
-        PropDialog->setWindowTitle(QApplication::translate("PropDialog", "Dialog", 0));
+        PropDialog->setWindowTitle(QApplication::translate("PropDialog", "\320\235\320\260\320\271\320\264\320\265\320\275\320\275\321\213\320\265 \320\276\320\261\321\212\320\265\320\272\321\202\321\213", 0));
         label->setText(QApplication::translate("PropDialog", "XC", 0));
         label_2->setText(QApplication::translate("PropDialog", "YC", 0));
         label_5->setText(QApplication::translate("PropDialog", "S", 0));
